@@ -2,6 +2,12 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+// At the top
+import PublicLayout from "../components/layout/PublicLayout";
+import Hero from "../components/home/Hero";
+import OurServices from "../components/home/OurServices";
+import Features from "../components/home/Features";
+import AboutUs from "../components/home/AboutUs";
 
 // Common layout
 import DashboardLayout from "../components/layout/DashboardLayout";
@@ -15,6 +21,8 @@ import ManageAdmin from "../pages/superadmin/ManageAdmin";
 import Bypass from "../pages/superadmin/Bypass";
 import Analysis from "../pages/superadmin/Analysis";
 import Queries from "../pages/superadmin/Queries";
+import Customize from "../pages/superadmin/Customize";
+import Roles from "../pages/superadmin/Roles";
 
 // Admin
 import AdminDashboard from "../pages/admin/AdminDashboard";
@@ -54,6 +62,14 @@ const AppRoutes = () => {
 
   return (
     <Routes>
+      {/* Public Landing Routes */}
+      <Route path="/" element={<PublicLayout />}>
+        <Route index element={<Hero />} />
+        <Route path="services" element={<OurServices />} />
+        <Route path="features" element={<Features />} />
+        <Route path="about" element={<AboutUs />} />
+      </Route>
+
       {/* Public Route */}
       <Route path="/login" element={<Login />} />
 
@@ -64,6 +80,8 @@ const AppRoutes = () => {
         <Route path="bypass" element={<Bypass />} />
         <Route path="analysis" element={<Analysis />} />
         <Route path="queries" element={<Queries />} />
+        <Route path="customize" element={<Customize />} />
+        <Route path="roles" element={<Roles />} />
       </Route>
 
       {/* Admin Routes */}
