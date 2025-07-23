@@ -1,21 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
 
 const Hero = () => {
-  const navigate = useNavigate();
-
   return (
-    <div style={{ padding: "2rem", textAlign: "center" }}>
-      <h1>Welcome to SmartHR</h1>
-      <p>This is the Hero section of the landing page.</p>
-
-      <div style={{ marginTop: "2rem", display: "flex", justifyContent: "center", gap: "1rem" }}>
-        <button onClick={() => navigate("/about")}>About Us</button>
-        <button onClick={() => navigate("/features")}>Features</button>
-        <button onClick={() => navigate("/services")}>Our Services</button>
-      </div>
+    <div>
+      <h1>hero</h1>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

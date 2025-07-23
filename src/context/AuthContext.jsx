@@ -4,7 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 
 // Change role here to test
 const initialUser = {
-  role: "superadmin", // or "superadmin", "engineer", "customer"
+  role: "hr", // or "superadmin", "engineer", "customer"
   email: "admin@example.com",
 };
 

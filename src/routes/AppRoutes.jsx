@@ -2,17 +2,15 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-// At the top
-import PublicLayout from "../components/layout/PublicLayout";
-import Hero from "../components/home/Hero";
-import OurServices from "../components/home/OurServices";
-import Features from "../components/home/Features";
-import AboutUs from "../components/home/AboutUs";
 
-// Common layout
+// Layouts
+import PublicLayout from "../components/layout/PublicLayout";
 import DashboardLayout from "../components/layout/DashboardLayout";
 
-// Pages
+// Public Landing Page
+import Home from "../pages/public/Home";
+
+// Auth
 import Login from "../pages/auth/Login";
 
 // Super Admin
@@ -22,7 +20,7 @@ import Bypass from "../pages/superadmin/Bypass";
 import Analysis from "../pages/superadmin/Analysis";
 import Queries from "../pages/superadmin/Queries";
 import Customize from "../pages/superadmin/Customize";
-import Roles from "../pages/superadmin/Roles";
+import Roles from "../pages/superadmin/Roles"; // <- don't forget this import
 
 // Admin
 import AdminDashboard from "../pages/admin/AdminDashboard";
@@ -32,6 +30,7 @@ import AdminAnalysis from "../pages/admin/AdminAnalysis";
 import AdminQueries from "../pages/admin/AdminQueries";
 
 // HR
+import HrDashboard from "../pages/hr/HrDashboard";
 import ManageEmployee from "../pages/hr/ManageEmployee";
 import TrackProjects from "../pages/hr/TrackProjects";
 import Hiring from "../pages/hr/Hiring";
@@ -56,21 +55,19 @@ import Profile from "../pages/employee/PersonalDetails";
 import EmpAttendance from "../pages/employee/EmpAttendance";
 import Tasks from "../pages/employee/AssignTasks";
 import Helpdesk from "../pages/employee/Helpdesk";
+import AboutUs from "../components/home/AboutUs";
 
 const AppRoutes = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
     <Routes>
-      {/* Public Landing Routes */}
-      <Route path="/" element={<PublicLayout />}>
-        <Route index element={<Hero />} />
-        <Route path="services" element={<OurServices />} />
-        <Route path="features" element={<Features />} />
-        <Route path="about" element={<AboutUs />} />
+      {/* Public Landing Route */}
+      <Route element={<PublicLayout />}>
+      <Route path ="/" element={<Home />} />
       </Route>
 
-      {/* Public Route */}
+      {/* Login */}
       <Route path="/login" element={<Login />} />
 
       {/* Super Admin Routes */}
@@ -95,7 +92,8 @@ const AppRoutes = () => {
 
       {/* HR Routes */}
       <Route path="/hr" element={<DashboardLayout role="hr" />}>
-        <Route index element={<ManageEmployee />} />
+        <Route index element={<HrDashboard />} />
+         <Route path="manage" element={<ManageEmployee />} />
         <Route path="projects" element={<TrackProjects />} />
         <Route path="hiring" element={<Hiring />} />
         <Route path="payroll" element={<Payroll />} />
@@ -103,7 +101,7 @@ const AppRoutes = () => {
         <Route path="training" element={<Training />} />
       </Route>
 
-      {/* Project Manager Routes */}
+      {/* Project Manager */}
       <Route path="/projectmanager" element={<DashboardLayout role="projectmanager" />}>
         <Route index element={<ManageProject />} />
         <Route path="assign" element={<Assign />} />
@@ -111,7 +109,7 @@ const AppRoutes = () => {
         <Route path="resources" element={<Resource />} />
       </Route>
 
-      {/* Team Lead Routes */}
+      {/* Team Lead */}
       <Route path="/teamlead" element={<DashboardLayout role="teamlead" />}>
         <Route index element={<TeamDashboard />} />
         <Route path="assign" element={<AssignTeam />} />
@@ -119,7 +117,7 @@ const AppRoutes = () => {
         <Route path="issues" element={<Issues />} />
       </Route>
 
-      {/* Employee Routes */}
+      {/* Employee */}
       <Route path="/employee" element={<DashboardLayout role="employee" />}>
         <Route index element={<Profile />} />
         <Route path="attendance" element={<EmpAttendance />} />
@@ -128,7 +126,7 @@ const AppRoutes = () => {
       </Route>
 
       {/* Fallback */}
-      <Route path="*" element={<Navigate to="/login" />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

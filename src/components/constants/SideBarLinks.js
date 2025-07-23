@@ -53,7 +53,8 @@ const SideBarLinks = {
     { label: "Logout", path: "/logout", icon: FaSignOutAlt },
   ],
   hr: [
-    { label: "Manage", path: "/hr", icon: FaBriefcase },
+    { label: "Dashboard", path: "/hr", icon: FaHome },
+    { label: "Manage", path: "/hr/manage", icon: FaBriefcase },
     { label: "Projects", path: "/hr/projects", icon: FaFolder },
     { label: "Hiring", path: "/hr/hiring", icon: FaUserFriends },
     { label: "Payroll", path: "/hr/payroll", icon: FaMoneyBillWave },
